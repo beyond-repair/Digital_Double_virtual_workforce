@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "digital-double"
+version = "0.1.0"
+description = "A scalable virtual workforce platform for task automation across industries"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "^2.6.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=digital_double --cov-report=term-missing"
