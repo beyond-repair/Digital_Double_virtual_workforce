@@ -1,124 +1,81 @@
+<div align="center">
+
 # Digital Double
 
-A scalable Python module for creating and managing virtual workforce agents capable of automating tasks across diverse industries.
+### Virtual workforce · Multi-industry agents · Task orchestration
 
-## Features
+[![Status](https://img.shields.io/badge/status-ACTIVE-22c55e?style=for-the-badge)](https://github.com/beyond-repair/Digital_Double_virtual_workforce)
+[![Canonical](https://img.shields.io/badge/canonical-public-0ea5e9?style=for-the-badge)](CANONICAL.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/beyond-repair/Digital_Double_virtual_workforce/ci.yml?style=for-the-badge&label=CI)](https://github.com/beyond-repair/Digital_Double_virtual_workforce/actions)
+[![Governance](https://img.shields.io/badge/ADL--Governance-7c3aed?style=for-the-badge)](https://github.com/beyond-repair/ADL-Governance)
 
-- **Multi-Industry Support**: Specialized agents for:
-  - IT Support
-  - Digital Marketing
-  - Content Writing
-  - Graphic/Web Design
-  - Finance
-  - Embedded Systems
-  - Mobile Development
-  - Legal Process Outsourcing
+**Public product line** for Atomic Dream Labs · other Digital Double forks are superseded
 
-- **Task Management**:
-  - Priority-based task queuing
-  - Automated task assignment
-  - Performance monitoring
-  - Deadline tracking
+</div>
 
-- **Agent Management**:
-  - Dynamic agent creation
-  - Status monitoring
-  - Performance metrics
-  - Task completion tracking
+---
 
-## Installation
+## What it does
+
+Spin up specialized agents, queue work by priority, assign, complete, and track performance — across domains like IT, marketing, content, design, finance, embedded, mobile, and legal ops.
+
+| Capability | Detail |
+|------------|--------|
+| **Agents** | Typed roles (`AgentType.*`) with status & metrics |
+| **Tasks** | Priority queue, assignment, deadlines |
+| **Orchestrator** | Create · assign · monitor |
+| **UI track** | Vite / React front-end (secondary to Python core) |
+
+---
+
+## Quick start (Python core)
 
 ```bash
-pip install digital-double
+git clone https://github.com/beyond-repair/Digital_Double_virtual_workforce.git
+cd Digital_Double_virtual_workforce
+python tests/test_orchestrator_smoke.py
 ```
-
-## Quick Start
 
 ```python
 from digital_double import Orchestrator, AgentType
 
-# Initialize the orchestrator
-orchestrator = Orchestrator()
-
-# Create an IT support agent
-agent = orchestrator.create_agent(AgentType.IT)
-
-# Create a task
-task = orchestrator.create_task(
+orch = Orchestrator()
+agent = orch.create_agent(AgentType.IT)
+task = orch.create_task(
     type=AgentType.IT,
-    description="Setup new development environment",
-    priority="high"
+    description="Setup development environment",
+    priority="high",
 )
-
-# Assign task
-orchestrator.assign_task(task.id)
-
-# Complete task
+orch.assign_task(task.id)
 agent.complete_task(success=True)
 ```
 
-## Core Components
+---
 
-### Agent Types
-Predefined agent types for different industries:
-```python
-from digital_double import AgentType
+## Agent types
 
-# Available agent types
-AgentType.IT           # IT Support
-AgentType.MARKETING    # Digital Marketing
-AgentType.CONTENT      # Content Writing
-AgentType.DESIGN       # Graphic/Web Design
-AgentType.FINANCE      # Finance
-AgentType.EMBEDDED     # Embedded Systems
-AgentType.MOBILE       # Mobile Development
-AgentType.LEGAL        # Legal Process
+```text
+IT · MARKETING · CONTENT · DESIGN · FINANCE · EMBEDDED · MOBILE · LEGAL
 ```
 
-### Task Management
-Create and manage tasks with priorities and deadlines:
-```python
-# Create a high-priority task
-task = orchestrator.create_task(
-    type=AgentType.IT,
-    description="Urgent server maintenance",
-    priority="high"
-)
+---
 
-# Get pending tasks
-pending_tasks = orchestrator.get_pending_tasks()
-```
+## Consolidation
 
-### Agent Management
-Monitor and manage agent status and performance:
-```python
-# Get available agents
-available_agents = orchestrator.get_available_agents()
+| Repo | Role |
+|------|------|
+| **This repo** | Public **canonical** |
+| `Digital_Double_Virtual_Workforce_4.2` | Private merge source |
+| 3.5 / mobile forks | **SUPERSEDED** |
 
-# Check agent performance
-agent_performance = agent.performance
-print(f"Tasks completed: {agent_performance.tasks_completed}")
-print(f"Success rate: {agent_performance.success_rate}%")
-```
+See [docs/CONSOLIDATION_PLAN.md](docs/CONSOLIDATION_PLAN.md) · [docs/MIGRATION.md](docs/MIGRATION.md)
 
-## Project Structure
+---
 
-```
-digital_double/
-├── __init__.py
-├── core/
-│   ├── agent.py
-│   ├── agent_types.py
-│   ├── orchestrator.py
-│   └── task.py
-└── examples/
-    └── basic_usage.py
-```
+<div align="center">
 
-## Contributing
+**[Atomic Dream Labs](https://github.com/beyond-repair)** · [ADL-Governance](https://github.com/beyond-repair/ADL-Governance)
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+<sub>One product surface. No parallel “source of truth” forks.</sub>
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+</div>
