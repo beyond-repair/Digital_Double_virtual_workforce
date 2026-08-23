@@ -1,20 +1,26 @@
-from datetime import datetime
+from __future__ import annotations
+
+from dataclasses import dataclass, field
 from typing import Optional
-from pydantic import BaseModel
+
 from .agent_types import AgentType
 from .task import Task
 
-class Performance(BaseModel):
+
+@dataclass
+class Performance:
     tasks_completed: int = 0
     average_time: float = 0.0
     success_rate: float = 100.0
 
-class Agent(BaseModel):
+
+@dataclass
+class Agent:
     id: str
     type: AgentType
     status: str = "idle"  # idle, working, error
     current_task: Optional[Task] = None
-    performance: Performance = Performance()
+    performance: Performance = field(default_factory=Performance)
 
     def assign_task(self, task: Task) -> None:
         """Assign a task to the agent."""
@@ -27,16 +33,17 @@ class Agent(BaseModel):
         """Mark current task as complete and update performance metrics."""
         if not self.current_task:
             raise ValueError("No task assigned")
-        
+
         self.performance.tasks_completed += 1
         if success:
             self.current_task.status = "completed"
         else:
             self.current_task.status = "failed"
             self.performance.success_rate = (
-                (self.performance.tasks_completed - 1) / 
-                self.performance.tasks_completed * 100
+                (self.performance.tasks_completed - 1)
+                / self.performance.tasks_completed
+                * 100
             )
-        
+
         self.current_task = None
         self.status = "idle"
