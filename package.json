@@ -19,7 +19,7 @@
     "tailwind-merge": "^2.2.1",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-select": "^2.0.0",
-    "nanoid": "^5.0.6"
+    "nanoid": "^5.1.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
