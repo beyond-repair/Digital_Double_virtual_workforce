@@ -19,9 +19,11 @@ def test_create_assign_complete():
         description="smoke: setup env",
         priority="high",
     )
-    orch.assign_task(task.id)
+    assert orch.assign_task(task.id) is True
     agent.complete_task(success=True)
     assert agent.performance.tasks_completed >= 1
+    assert agent.status == "idle"
+    assert task.status == "completed"
 
 
 if __name__ == "__main__":

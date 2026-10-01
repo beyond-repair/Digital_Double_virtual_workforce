@@ -2,7 +2,8 @@
 name = "digital-double"
 version = "0.1.0"
 description = "A scalable virtual workforce platform for task automation across industries"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Beyond-Repair <beyond-repair@users.noreply.github.com>"]
+packages = [{ include = "digital_double" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -19,4 +20,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-v --cov=digital_double --cov-report=term-missing"
+addopts = "-v"

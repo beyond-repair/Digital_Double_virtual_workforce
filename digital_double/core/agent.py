@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from .agent_types import AgentType
+from .prompts import get_agent_prompt
 from .task import Task
 
 
@@ -21,6 +22,9 @@ class Agent:
     status: str = "idle"  # idle, working, error
     current_task: Optional[Task] = None
     performance: Performance = field(default_factory=Performance)
+
+    def __post_init__(self) -> None:
+        self._prompt = get_agent_prompt(self.type)
 
     def assign_task(self, task: Task) -> None:
         """Assign a task to the agent."""
@@ -47,3 +51,11 @@ class Agent:
 
         self.current_task = None
         self.status = "idle"
+
+    def get_model_name(self) -> str:
+        """Return the model name associated with this agent type."""
+        return self._prompt.model
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for this agent type."""
+        return self._prompt.system_prompt
