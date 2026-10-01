@@ -1,5 +1,21 @@
 <div align="center">
 
+[![Lifecycle](https://img.shields.io/badge/●_ACTIVE-22c55e?style=for-the-badge&labelColor=0f0f23)](https://github.com/beyond-repair/ADL-Governance)
+[![Claim](https://img.shields.io/badge/Claim_software-22c55e?style=for-the-badge&labelColor=0f0f23)](https://github.com/beyond-repair/ADL-Governance/blob/main/docs/CLAIM_VALIDATION.md)
+[![Governance](https://img.shields.io/badge/ADL--Governance-7c3aed?style=for-the-badge&labelColor=0f0f23)](https://github.com/beyond-repair/ADL-Governance)
+
+```
+LIFECYCLE   ACTIVE
+CLAIM       software
+NOT CLAIMED claim level raised by this README
+```
+
+</div>
+
+---
+
+<div align="center">
+
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
