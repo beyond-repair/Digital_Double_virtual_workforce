@@ -1,13 +1,27 @@
-[tool.poetry]
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "digital-double"
 version = "0.1.0"
 description = "A scalable virtual workforce platform for task automation across industries"
-authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Beyond-Repair", email = "beyond-repair@users.noreply.github.com" }]
+dependencies = [
+  "pydantic>=2.6.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-pydantic = "^2.6.1"
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["digital_double*"]
+exclude = ["digital_double.tests*", "digital_double.examples*", "tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v"
